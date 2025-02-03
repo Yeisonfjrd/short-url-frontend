@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>URL Shortener</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Acortador de URLs</h1>
+    <form id="shortenForm">
+      <input type="url" id="urlInput" placeholder="Ingresa tu URL" required>
+      <input type="text" id="customAlias" placeholder="Alias personalizado (opcional)">
+      <button type="submit">Acortar</button>
+    </form>
+    <div id="result" class="hidden">
+      <p>URL Corta: <a id="shortUrl" href="#" target="_blank"></a></p>
+      <button id="copyButton">Copiar</button>
+    </div>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>
