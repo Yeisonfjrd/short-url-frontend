@@ -41,7 +41,7 @@ module.exports = {
     proxy: [
       {
         context: ['/shorten'],
-        target: 'http://localhost:8080',
+        target: 'https://short-url-frontend-xi.vercel.app/',
         secure: false,
         changeOrigin: true,
       },
