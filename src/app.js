@@ -15,10 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            console.log('Sending request to:', `${API_URL}/api/shorten`);
+            const apiUrl = `${API_URL}/api/shorten`;
+            console.log('Full URL:', apiUrl);
             console.log('Payload:', payload);
             
-            const response = await fetch(`${API_URL}/api/shorten`, {
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
