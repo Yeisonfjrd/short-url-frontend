@@ -1,0 +1,1 @@
+export const API_URL = "YOUR_BACKEND_URL"; 

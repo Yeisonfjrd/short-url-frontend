@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+import { API_URL } from './config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const shortenForm = document.getElementById('shortenForm');
