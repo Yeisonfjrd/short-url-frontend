@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
+            console.log('Sending request to:', `${API_URL}/api/shorten`);
+            console.log('Payload:', payload);
+            
             const response = await fetch(`${API_URL}/api/shorten`, {
                 method: 'POST',
                 headers: {
@@ -25,13 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload)
             });
 
+            console.log('Response status:', response.status);
+            const responseText = await response.text();
+            console.log('Response text:', responseText);
+
             if (!response.ok) {
-                const errorData = await response.text();
-                console.error('Response:', errorData);
-                throw new Error(`HTTP error! status: ${response.status}, message: ${errorData}`);
+                throw new Error(`HTTP error! status: ${response.status}, message: ${responseText}`);
             }
 
-            const data = await response.json();
+            const data = JSON.parse(responseText);
             const shortUrl = data.short_url;
             shortUrlLink.href = shortUrl;
             shortUrlLink.textContent = shortUrl;
