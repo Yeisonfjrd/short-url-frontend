@@ -1,3 +1,5 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+
 document.addEventListener('DOMContentLoaded', () => {
     const shortenForm = document.getElementById('shortenForm');
     const urlInput = document.getElementById('urlInput');
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/shorten', {
+            const response = await fetch(`${API_URL}/api/shorten`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
