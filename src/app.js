@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorData = await response.text();
+                console.error('Response:', errorData);
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorData}`);
             }
 
             const data = await response.json();
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             shortUrlLink.textContent = shortUrl;
             resultDiv.classList.remove('hidden');
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Full error:', error);
             alert('Error al acortar URL: ' + error.message);
         }
     });
