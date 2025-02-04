@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "buildCommand": "mkdir -p dist && cp -r src/* dist/",
+  "outputDirectory": "dist",
+  "public": true
+} 
