@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "./public/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "buildCommand": "mkdir -p dist && cp -r src/* dist/",
   "outputDirectory": "dist",
