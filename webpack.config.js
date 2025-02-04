@@ -36,8 +36,8 @@ module.exports = {
     historyApiFallback: true,
     proxy: [
       {
-        context: ['/shorten'],  // Asegúrate de que la ruta sea correcta
-        target: 'http://localhost:8080',  // Tu backend local
+        context: ['/shorten'],
+        target: 'http://localhost:8080',
         secure: false,
         changeOrigin: true,
       },

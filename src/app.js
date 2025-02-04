@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const shortenForm = document.getElementById('shortenForm');
     const urlInput = document.getElementById('urlInput');
-    const customAliasInput = document.getElementById('customAlias');
     const resultDiv = document.getElementById('result');
     const shortUrlLink = document.getElementById('shortUrl');
     const copyButton = document.getElementById('copyButton');
@@ -10,32 +9,33 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         
         const payload = {
-            url: urlInput.value,
-            custom_alias: customAliasInput.value || undefined
+            url: urlInput.value
         };
 
         try {
-            const response = await fetch('/shorten', {
+            const response = await fetch('http://localhost:8080/api/shorten', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
+                mode: 'cors',
+                credentials: 'include',
                 body: JSON.stringify(payload)
             });
 
-            const data = await response.json();
-            
-            if (response.ok) {
-                const shortUrl = `${window.location.origin}/${data.short_url}`;
-                shortUrlLink.href = shortUrl;
-                shortUrlLink.textContent = shortUrl;
-                resultDiv.classList.remove('hidden');
-            } else {
-                alert(data.error || 'Error al acortar URL');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+
+            const data = await response.json();
+            const shortUrl = data.short_url;
+            shortUrlLink.href = shortUrl;
+            shortUrlLink.textContent = shortUrl;
+            resultDiv.classList.remove('hidden');
         } catch (error) {
             console.error('Error:', error);
-            alert('Error de red');
+            alert('Error al acortar URL: ' + error.message);
         }
     });
 
