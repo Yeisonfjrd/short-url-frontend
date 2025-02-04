@@ -1,5 +1,3 @@
-import './styles.css';
-
 document.addEventListener('DOMContentLoaded', () => {
     const shortenForm = document.getElementById('shortenForm');
     const urlInput = document.getElementById('urlInput');

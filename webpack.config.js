@@ -12,16 +12,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
           },
         },
       },
@@ -40,11 +36,11 @@ module.exports = {
     historyApiFallback: true,
     proxy: [
       {
-        context: ['/shorten'],
-        target: 'https://short-url-frontend-xi.vercel.app/',
+        context: ['/shorten'],  // Asegúrate de que la ruta sea correcta
+        target: 'http://localhost:8080',  // Tu backend local
         secure: false,
         changeOrigin: true,
       },
     ],
-  },  
+  },
 };
